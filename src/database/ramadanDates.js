@@ -6,7 +6,7 @@
  * March 20, 2026 is Eid ul Fitr (1 Shawwal 1447)
  * 
  * All dates open for booking except:
- * - March 14th: HMCC Sponsored - Khatam-e-Quran
+ * - March 14th: HMCC Sponsored - Khatm-e-Quran
  * 
  * Guest capacity: 100 (fixed)
  * Flat pricing: $1,500 ($1,400 Food + $100 Cleanup)

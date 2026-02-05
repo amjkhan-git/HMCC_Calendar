@@ -1194,6 +1194,15 @@
                     <span class="card-status ${statusClass}">${statusText}</span>
                 `;
 
+                // Show HMCC sponsored info
+                if (day.booking_status === 'hmcc_sponsored' && day.sponsor_name) {
+                    cardContent += `
+                        <div class="sponsor-info">
+                            <div class="sponsor-name">🕌 ${day.sponsor_name}</div>
+                        </div>
+                    `;
+                }
+
                 // Show sponsor info for booked/pending dates
                 if (['booked', 'pending_approval'].includes(day.booking_status) && (day.sponsor_organization || day.sponsor_name)) {
                     let paymentLabel = 'Payment - Pending';
