@@ -1,0 +1,1663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HMCC Ramadan Iftar Sponsorship Calendar 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* HMCC Brand Colors - Blue/Teal theme */
+            --primary-color: #0d6efd;
+            --primary-dark: #0a58ca;
+            --primary-light: #3d8bfd;
+            --secondary-color: #198754;
+            --gold: #ffc107;
+            --gold-light: #fff3cd;
+            
+            /* Status Colors */
+            --available-color: #198754;
+            --available-bg: #d1e7dd;
+            --booked-color: #0d6efd;
+            --booked-bg: #cfe2ff;
+            --pending-color: #fd7e14;
+            --pending-bg: #ffe5d0;
+            --blocked-color: #6c757d;
+            --blocked-bg: #e9ecef;
+            --special-color: #6f42c1;
+            --special-bg: #e2d9f3;
+            --hmcc-color: #0d6efd;
+            --hmcc-bg: #cfe2ff;
+            
+            /* Payment Status */
+            --payment-pending: #fd7e14;
+            --payment-partial: #0dcaf0;
+            --payment-completed: #198754;
+            
+            /* General */
+            --text-color: #212529;
+            --text-light: #6c757d;
+            --border-color: #dee2e6;
+            --bg-color: #f8f9fa;
+            --white: #fff;
+            --shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+            color: var(--white);
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '☪';
+            position: absolute;
+            font-size: 200px;
+            opacity: 0.05;
+            right: -20px;
+            top: -30px;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .header h2 {
+            font-size: 1.2rem;
+            font-weight: 300;
+            color: var(--gold-light);
+        }
+
+        .header .subtitle {
+            margin-top: 0.5rem;
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        .admin-bar {
+            background: var(--gold);
+            padding: 0.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .admin-bar.hidden {
+            display: none;
+        }
+
+        .admin-bar span {
+            font-weight: 600;
+            color: var(--primary-dark);
+        }
+
+        .admin-bar button {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        /* Stats Bar */
+        .stats-bar {
+            background: var(--white);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            box-shadow: var(--shadow);
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 0.5rem 1rem;
+        }
+
+        .stat-number {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Pricing Info */
+        .pricing-info {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow);
+        }
+
+        .pricing-info h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .pricing-card {
+            background: var(--bg-color);
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .pricing-card h4 {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+        }
+
+        .pricing-card .price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .pricing-card .breakdown {
+            font-size: 0.8rem;
+            color: var(--text-light);
+        }
+
+        /* Legend */
+        .legend {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+        }
+
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 4px;
+        }
+
+        .legend-color.available { background: var(--available-bg); border: 2px solid var(--available-color); }
+        .legend-color.booked { background: var(--booked-bg); border: 2px solid var(--booked-color); }
+        .legend-color.pending { background: var(--pending-bg); border: 2px solid var(--pending-color); }
+        .legend-color.blocked { background: var(--blocked-bg); border: 2px solid var(--blocked-color); }
+        .legend-color.hmcc { background: var(--hmcc-bg); border: 2px solid var(--hmcc-color); }
+        .legend-color.special { background: var(--special-bg); border: 2px solid var(--special-color); }
+
+        /* Calendar Grid */
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        /* Calendar Card */
+        .calendar-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 1rem;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .calendar-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .calendar-card.available {
+            border-color: var(--available-color);
+        }
+
+        .calendar-card.available:hover {
+            background: var(--available-bg);
+        }
+
+        .calendar-card.booked {
+            border-color: var(--booked-color);
+            background: var(--booked-bg);
+        }
+
+        .calendar-card.pending_approval {
+            border-color: var(--pending-color);
+            background: var(--pending-bg);
+        }
+
+        .calendar-card.blocked {
+            border-color: var(--blocked-color);
+            background: var(--blocked-bg);
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
+
+        .calendar-card.hmcc_sponsored {
+            border-color: var(--hmcc-color);
+            background: var(--hmcc-bg);
+            cursor: not-allowed;
+        }
+
+        .calendar-card.eid {
+            border-color: var(--gold);
+            background: linear-gradient(135deg, #fff9e6 0%, #fff3cc 100%);
+            cursor: not-allowed;
+        }
+
+        .card-status.eid { background: var(--gold); color: var(--primary-dark); }
+
+        .calendar-card.special {
+            border-color: var(--special-color);
+        }
+
+        .calendar-card.special::before {
+            content: '⭐';
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            font-size: 1rem;
+        }
+
+        .card-date {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 0.5rem;
+        }
+
+        .gregorian-date {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        .day-number {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            line-height: 1;
+        }
+
+        .hijri-date {
+            font-size: 0.8rem;
+            color: var(--secondary-color);
+            font-weight: 500;
+        }
+
+        .day-name {
+            font-size: 0.75rem;
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+        }
+
+        .card-status {
+            display: inline-block;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .card-status.available { background: var(--available-color); color: white; }
+        .card-status.booked { background: var(--booked-color); color: white; }
+        .card-status.pending_approval { background: var(--pending-color); color: white; }
+        .card-status.blocked { background: var(--blocked-color); color: white; }
+        .card-status.hmcc_sponsored { background: var(--hmcc-color); color: white; }
+
+        .sponsor-info {
+            margin-top: 0.75rem;
+            padding-top: 0.75rem;
+            border-top: 1px dashed var(--border-color);
+            font-size: 0.8rem;
+        }
+
+        .sponsor-name {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .vendor-name {
+            color: var(--text-light);
+            font-size: 0.75rem;
+        }
+
+        .payment-badge {
+            display: inline-block;
+            padding: 0.1rem 0.4rem;
+            border-radius: 10px;
+            font-size: 0.65rem;
+            font-weight: 600;
+            margin-top: 0.25rem;
+        }
+
+        .payment-badge.pending { background: #ffe5d0; color: var(--payment-pending); }
+        .payment-badge.partial { background: #cff4fc; color: var(--payment-partial); }
+        .payment-badge.completed { background: #d1e7dd; color: var(--payment-completed); }
+
+        .pricing-badge {
+            display: block;
+            font-size: 0.7rem;
+            color: var(--primary-color);
+            margin-top: 0.25rem;
+            font-weight: 500;
+        }
+
+        .special-night-badge {
+            display: block;
+            margin-top: 0.5rem;
+            padding: 0.2rem 0.4rem;
+            background: var(--special-bg);
+            color: var(--special-color);
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: 500;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--white);
+            border-radius: 16px;
+            max-width: 550px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+            color: var(--white);
+            padding: 1.5rem;
+            border-radius: 16px 16px 0 0;
+        }
+
+        .modal-header h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .modal-header p {
+            font-size: 0.85rem;
+            opacity: 0.9;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-body {
+            padding: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.4rem;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .form-group label.required::after {
+            content: ' *';
+            color: #dc3545;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.6rem 0.8rem;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-family: inherit;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .form-section {
+            background: var(--bg-color);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        .form-section h4 {
+            font-size: 0.9rem;
+            color: var(--primary-color);
+            margin-bottom: 0.75rem;
+        }
+
+        .pricing-display {
+            background: var(--gold-light);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .pricing-display .total {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+        }
+
+        .pricing-display .breakdown {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        .btn {
+            padding: 0.7rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: inherit;
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+        }
+
+        .btn-secondary {
+            background: var(--border-color);
+            color: var(--text-color);
+        }
+
+        .btn-danger {
+            background: #dc3545;
+            color: white;
+        }
+
+        .btn-success {
+            background: var(--available-color);
+            color: white;
+        }
+
+        .modal-footer {
+            padding: 1rem 1.5rem;
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            gap: 0.75rem;
+            justify-content: flex-end;
+            flex-wrap: wrap;
+        }
+
+        .payment-link-section {
+            background: var(--gold-light);
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .payment-link-section a {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background: var(--gold);
+            color: var(--primary-dark);
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            margin-top: 0.5rem;
+        }
+
+        /* Admin Panel Styles */
+        .admin-actions {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .admin-actions .btn {
+            padding: 0.4rem 0.8rem;
+            font-size: 0.8rem;
+        }
+
+        /* Toast */
+        .toast-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 2000;
+        }
+
+        .toast {
+            background: var(--white);
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            box-shadow: var(--shadow-hover);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            animation: slideIn 0.3s ease;
+        }
+
+        .toast.success { border-left: 4px solid var(--available-color); }
+        .toast.error { border-left: 4px solid #dc3545; }
+        .toast.info { border-left: 4px solid var(--booked-color); }
+
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        /* Loading */
+        .loading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 3rem;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid var(--border-color);
+            border-top-color: var(--primary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header h1 { font-size: 1.6rem; }
+            .form-row { grid-template-columns: 1fr; }
+            .calendar-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
+            .pricing-grid { grid-template-columns: 1fr; }
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            background: var(--primary-dark);
+            color: var(--white);
+            margin-top: 3rem;
+        }
+
+        .footer a {
+            color: var(--gold-light);
+            text-decoration: none;
+        }
+
+        .footer .credit {
+            margin-top: 1.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .footer .credit a {
+            color: var(--gold);
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .footer .credit a:hover {
+            color: var(--gold-light);
+        }
+
+        /* Login Modal */
+        .login-form {
+            max-width: 350px;
+        }
+
+        .login-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            font-weight: 600;
+            z-index: 100;
+        }
+
+        .export-buttons {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .export-buttons .btn {
+            font-size: 0.85rem;
+            padding: 0.5rem 1rem;
+        }
+
+        /* Zelle Info Box */
+        .zelle-info {
+            background: #e8f4fd;
+            border: 1px solid #0d6efd;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .zelle-info h5 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .zelle-info p {
+            margin: 0.25rem 0;
+            font-size: 0.85rem;
+        }
+
+        .zelle-info a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>🌙 HMCC Ramadan Calendar 2026</h1>
+        <h2>رمضان ١٤٤٧</h2>
+        <p class="subtitle">Sponsor an Iftar at Heathrow Muslim Community Center</p>
+        <p class="hadith" style="margin-top: 1rem; font-style: italic; font-size: 0.9rem; max-width: 800px; margin-left: auto; margin-right: auto; opacity: 0.95;">Prophet Muhammad (PBUH) said, "He who provides a fasting person something with which to break his fast, will earn the same reward as the one who was observing the fast, without diminishing in any way the reward of the latter." (Tirmidhi)</p>
+    </header>
+
+    <div class="admin-bar hidden" id="admin-bar">
+        <span>👤 Admin: <span id="admin-username"></span></span>
+        <div class="export-buttons">
+            <button class="btn" id="export-csv-btn">📥 CSV</button>
+            <button class="btn" id="export-excel-btn">📊 Excel</button>
+            <button class="btn" id="export-pdf-btn">📄 PDF</button>
+            <button class="btn btn-secondary" id="logout-btn">Logout</button>
+        </div>
+    </div>
+
+    <div class="stats-bar">
+        <div class="stat-item">
+            <div class="stat-number" id="total-dates">30</div>
+            <div class="stat-label">Total Days</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number" id="available-dates">-</div>
+            <div class="stat-label">Available</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number" id="booked-dates">-</div>
+            <div class="stat-label">Sponsored</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number" id="pending-dates">-</div>
+            <div class="stat-label">Pending</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number" id="payments-completed">-</div>
+            <div class="stat-label">Paid</div>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Pricing Info -->
+        <div class="pricing-info">
+            <h3>💰 Sponsorship Pricing</h3>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h4>Iftar Sponsorship (All Days)</h4>
+                    <div class="price">$1,500</div>
+                    <div class="breakdown">$1,400 Food + $100 Cleanup</div>
+                    <div class="breakdown" style="margin-top: 0.5rem; font-style: italic;">Estimated cost includes:<br>(Food, Dates, Water and paper products)</div>
+                    <div class="breakdown">Capacity: ~100 guests</div>
+                </div>
+                <div class="pricing-card">
+                    <h4>📞 Contact for Sponsorship</h4>
+                    <div class="breakdown" style="text-align: left; line-height: 1.8;">
+                        <strong>Br. Mazar:</strong> <a href="tel:2026309790" style="color: var(--primary-color);">(202) 630-9790</a><br>
+                        <strong>Br. Jamal:</strong> <a href="tel:4072169252" style="color: var(--primary-color);">(407) 216-9252</a><br>
+                        <strong>Br. Saif:</strong> <a href="tel:8133176363" style="color: var(--primary-color);">(813) 317-6363</a><br>
+                        <strong>Br. Khan:</strong> <a href="tel:8503451751" style="color: var(--primary-color);">(850) 345-1751</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="legend">
+            <div class="legend-item">
+                <div class="legend-color available"></div>
+                <span>Available</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color pending"></div>
+                <span>Pending Approval</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color booked"></div>
+                <span>Sponsored</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color hmcc"></div>
+                <span>HMCC Sponsored</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color blocked"></div>
+                <span>Unavailable</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color special"></div>
+                <span>Special Night</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: linear-gradient(135deg, #fff9e6 0%, #fff3cc 100%); border: 2px solid var(--gold);"></div>
+                <span>Eid ul Fitr</span>
+            </div>
+        </div>
+
+        <div id="calendar-container">
+            <div class="loading">
+                <div class="spinner"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Booking Modal -->
+    <div class="modal" id="booking-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="modal-close" id="booking-modal-close">&times;</button>
+                <h3 id="modal-title">Sponsor Iftar</h3>
+                <p id="modal-date"></p>
+            </div>
+            <div class="modal-body">
+                <div class="pricing-display" id="pricing-display">
+                    <div class="total" id="display-total">$2,500</div>
+                    <div class="breakdown" id="display-breakdown">$2,000 Food + $500 Cleanup</div>
+                </div>
+
+                <form id="booking-form">
+                    <input type="hidden" id="booking-id">
+                    <input type="hidden" id="selected-date">
+
+                    <div class="form-section">
+                        <h4>👤 Sponsor Information</h4>
+                        <div class="form-group">
+                            <label for="sponsor_name" class="required">Your Name</label>
+                            <input type="text" id="sponsor_name" name="sponsor_name" required placeholder="Full Name">
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="sponsor_email" class="required">Email</label>
+                                <input type="email" id="sponsor_email" name="sponsor_email" required placeholder="email@example.com">
+                            </div>
+                            <div class="form-group">
+                                <label for="sponsor_phone" class="required">Phone</label>
+                                <input type="tel" id="sponsor_phone" name="sponsor_phone" required placeholder="(555) 123-4567">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="sponsor_organization" class="required">Family Name (for display)</label>
+                            <input type="text" id="sponsor_organization" name="sponsor_organization" required placeholder="e.g., Khan Family, Ahmed/Ali Families">
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h4>🍽️ Food Vendor Information</h4>
+                        <div class="form-group">
+                            <label for="food_vendor_name">Vendor / Restaurant Name</label>
+                            <select id="food_vendor_name" name="food_vendor_name">
+                                <option value="">Select a vendor...</option>
+                                <option value="Ali Baba">Ali Baba</option>
+                                <option value="Curry Element">Curry Element</option>
+                                <option value="Jabeens">Jabeens</option>
+                                <option value="International Food Market">International Food Market</option>
+                                <option value="Mezbban">Mezbban</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h4>📝 Additional Details</h4>
+                        <div class="form-group">
+                            <label for="expected_guests">Expected Guests</label>
+                            <input type="text" id="expected_guests" name="expected_guests" value="100" readonly style="background-color: #f5f5f5; color: #666; cursor: not-allowed;">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="special_notes">Special Notes</label>
+                            <textarea id="special_notes" name="special_notes" rows="2" placeholder="Any special requests or notes"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h4>💳 Payment Information</h4>
+                        <div class="zelle-info">
+                            <h5>Pay via Zelle</h5>
+                            <p>💵 <strong>Zelle:</strong> <a href="mailto:Hmccoppexp@yahoo.com">Hmccoppexp@yahoo.com</a></p>
+                        </div>
+                    </div>
+
+                    <!-- Admin-only fields -->
+                    <div class="form-section admin-only" id="admin-fields" style="display:none;">
+                        <h4>💰 Payment Tracking (Admin)</h4>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="payment_status">Payment Status</label>
+                                <select id="payment_status" name="payment_status">
+                                    <option value="pending">Pending</option>
+                                    <option value="partial">Partial</option>
+                                    <option value="completed">Completed</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="amount_paid">Amount Paid ($)</label>
+                                <input type="number" id="amount_paid" name="amount_paid" min="0" step="0.01">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="payment_method_admin">Payment Method</label>
+                                <select id="payment_method_admin" name="payment_method_admin">
+                                    <option value="">Select...</option>
+                                    <option value="zelle">Zelle</option>
+                                    <option value="check">Check</option>
+                                    <option value="cash">Cash</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="check_number">Check Number</label>
+                                <input type="text" id="check_number" name="check_number" placeholder="If paid by check">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="mohid_reference">Payment Reference</label>
+                            <input type="text" id="mohid_reference" name="mohid_reference" placeholder="Transaction reference">
+                        </div>
+                        
+                        <h4 style="margin-top: 1.5rem;">🔐 Admin Notes</h4>
+                        <div class="form-group">
+                            <label for="admin_comment">Admin Comment</label>
+                            <textarea id="admin_comment" name="admin_comment" rows="2" placeholder="Internal notes (not visible to sponsor)"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="payment-link-section" id="payment-link-section">
+                        <a href="https://www.heathrowmcc.org/donate/" id="payment-link" target="_blank" class="btn btn-primary" style="display: inline-block; text-decoration: none;">💳 Donate Online</a>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer" id="modal-footer">
+                <button type="button" class="btn btn-secondary" id="modal-close-btn">Close</button>
+                <button type="button" class="btn btn-primary" id="submit-btn">Submit Sponsorship</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div class="modal" id="login-modal">
+        <div class="modal-content login-form">
+            <div class="modal-header">
+                <button type="button" class="modal-close" id="login-modal-close">&times;</button>
+                <h3>Admin Login</h3>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="login-username">Username</label>
+                    <input type="text" id="login-username" placeholder="Username">
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Password</label>
+                    <input type="password" id="login-password" placeholder="Password">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" id="login-cancel-btn">Cancel</button>
+                <button type="button" class="btn btn-primary" id="login-submit-btn">Login</button>
+            </div>
+        </div>
+    </div>
+
+    <button class="login-btn" id="login-btn">🔐 Admin</button>
+
+    <div class="toast-container" id="toast-container"></div>
+
+    <footer class="footer">
+        <p>Heathrow Muslim Community Center (HMCC)</p>
+        <p>1325 S International Pkwy, #1241 Lake Mary, FL-32746</p>
+        <p><a href="https://www.heathrowmcc.org" target="_blank">heathrowmcc.org</a> | <a href="tel:321-415-2675">(321) 415-2675</a></p>
+        <p><a href="mailto:info@heathrowmcc.org">info@heathrowmcc.org</a></p>
+        <p class="credit">Designed & Developed by <a href="mailto:amjkhan011@gmail.com">Amjad Khan</a></p>
+    </footer>
+
+    <script>
+        const API_BASE = '/api/v1';
+        let calendarData = [];
+        let currentBooking = null;
+        let adminToken = localStorage.getItem('adminToken');
+        let paymentLink = 'https://www.heathrowmcc.org/donate/';
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            loadCalendar();
+            loadStats();
+            checkAdminStatus();
+
+            // Event listeners for buttons
+            // Admin bar buttons
+            document.getElementById('export-csv-btn').addEventListener('click', () => exportData('csv'));
+            document.getElementById('export-excel-btn').addEventListener('click', () => exportData('excel'));
+            document.getElementById('export-pdf-btn').addEventListener('click', () => exportData('pdf'));
+            document.getElementById('logout-btn').addEventListener('click', logout);
+
+            // Login modal buttons
+            document.getElementById('login-btn').addEventListener('click', showLoginModal);
+            document.getElementById('login-modal-close').addEventListener('click', closeLoginModal);
+            document.getElementById('login-cancel-btn').addEventListener('click', closeLoginModal);
+            document.getElementById('login-submit-btn').addEventListener('click', login);
+
+            // Booking modal buttons
+            document.getElementById('booking-modal-close').addEventListener('click', closeModal);
+            document.getElementById('modal-close-btn').addEventListener('click', closeModal);
+            document.getElementById('submit-btn').addEventListener('click', submitBooking);
+
+            // Enter key for login
+            document.getElementById('login-password').addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') login();
+            });
+        });
+
+        // Check if admin is logged in
+        async function checkAdminStatus() {
+            if (!adminToken) return;
+
+            try {
+                const response = await fetch(`${API_BASE}/admin/me`, {
+                    headers: { 'Authorization': `Bearer ${adminToken}` }
+                });
+
+                if (response.ok) {
+                    const result = await response.json();
+                    showAdminUI(result.data.username);
+                } else {
+                    localStorage.removeItem('adminToken');
+                    adminToken = null;
+                }
+            } catch (error) {
+                console.error('Auth check failed:', error);
+            }
+        }
+
+        function showAdminUI(username) {
+            document.getElementById('admin-bar').classList.remove('hidden');
+            document.getElementById('admin-username').textContent = username;
+            document.getElementById('login-btn').style.display = 'none';
+            loadCalendar(); // Reload with admin privileges
+        }
+
+        function hideAdminUI() {
+            document.getElementById('admin-bar').classList.add('hidden');
+            document.getElementById('login-btn').style.display = 'block';
+        }
+
+        // Load calendar data
+        async function loadCalendar() {
+            try {
+                const response = await fetch(`${API_BASE}/calendar`);
+                const result = await response.json();
+                
+                if (result.success) {
+                    calendarData = result.data;
+                    if (result.meta.payment_link) {
+                        paymentLink = result.meta.payment_link;
+                    }
+                    document.getElementById('payment-link').href = paymentLink;
+                    renderCalendar();
+                } else {
+                    showToast('Failed to load calendar', 'error');
+                }
+            } catch (error) {
+                console.error('Error loading calendar:', error);
+                showToast('Failed to connect to server', 'error');
+            }
+        }
+
+        // Load statistics
+        async function loadStats() {
+            try {
+                const response = await fetch(`${API_BASE}/calendar/stats`);
+                const result = await response.json();
+                
+                if (result.success) {
+                    document.getElementById('total-dates').textContent = result.data.total_dates;
+                    document.getElementById('available-dates').textContent = result.data.available_dates;
+                    document.getElementById('booked-dates').textContent = result.data.booked_dates;
+                    document.getElementById('pending-dates').textContent = result.data.pending_dates || 0;
+                    document.getElementById('payments-completed').textContent = result.data.payments_completed;
+                }
+            } catch (error) {
+                console.error('Error loading stats:', error);
+            }
+        }
+
+        // Render calendar
+        function renderCalendar() {
+            const container = document.getElementById('calendar-container');
+            container.innerHTML = '';
+
+            const grid = document.createElement('div');
+            grid.className = 'calendar-grid';
+
+            calendarData.forEach(day => {
+                const card = document.createElement('div');
+                let statusClass = day.booking_status;
+                card.className = `calendar-card ${statusClass}${day.is_special_night ? ' special' : ''}`;
+                
+                // Only clickable if available or admin
+                if (day.booking_status === 'available' || adminToken) {
+                    card.onclick = () => openModal(day);
+                } else if (day.booking_status !== 'blocked' && day.booking_status !== 'hmcc_sponsored') {
+                    card.onclick = () => openModal(day);
+                }
+
+                const dateObj = new Date(day.date + 'T00:00:00');
+                const formattedDate = dateObj.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+
+                let statusText = day.booking_status.replace('_', ' ');
+                if (day.booking_status === 'hmcc_sponsored') statusText = 'HMCC';
+                if (day.booking_status === 'pending_approval') statusText = 'Pending';
+                if (day.booking_status === 'eid') statusText = 'Eid ul Fitr';
+
+                // Handle Eid day number display
+                const dayNumber = day.hijri_day ? day.hijri_day : (day.booking_status === 'eid' ? '🌙' : '');
+
+                let cardContent = `
+                    <div class="card-date">
+                        <div>
+                            <div class="gregorian-date">${formattedDate}</div>
+                            <div class="hijri-date">${day.hijri_date}</div>
+                        </div>
+                        <div class="day-number">${dayNumber}</div>
+                    </div>
+                    <div class="day-name">${day.day_of_week}</div>
+                    <span class="card-status ${statusClass}">${statusText}</span>
+                `;
+
+                // Show sponsor info for booked/pending dates
+                if (['booked', 'pending_approval'].includes(day.booking_status) && (day.sponsor_organization || day.sponsor_name)) {
+                    let paymentLabel = 'Payment - Pending';
+                    if (day.payment_status === 'partial') paymentLabel = 'Payment - Partial';
+                    if (day.payment_status === 'completed') paymentLabel = 'Payment - Completed';
+                    
+                    // Display family name (sponsor_organization) if available, otherwise fall back to sponsor_name
+                    const displayName = day.sponsor_organization || day.sponsor_name;
+                    
+                    cardContent += `
+                        <div class="sponsor-info">
+                            <div class="sponsor-name">🤲 ${displayName}</div>
+                            ${day.food_vendor_name ? `<div class="vendor-name">🍽️ ${day.food_vendor_name}</div>` : ''}
+                            <span class="payment-badge ${day.payment_status}">${paymentLabel}</span>
+                        </div>
+                    `;
+                }
+
+                // Show pricing badge
+                if (day.booking_status === 'available' && day.total_amount) {
+                    cardContent += `<div class="pricing-badge">$${day.total_amount.toLocaleString()}</div>`;
+                }
+
+                // Special night badge
+                if (day.is_special_night && day.special_night_info) {
+                    cardContent += `<div class="special-night-badge">✨ ${day.special_night_info.name}</div>`;
+                }
+
+                card.innerHTML = cardContent;
+                grid.appendChild(card);
+            });
+
+            container.appendChild(grid);
+        }
+
+        // Open booking modal
+        function openModal(day) {
+            currentBooking = day;
+            
+            if (day.booking_status === 'blocked' && !adminToken) {
+                showToast('This date is unavailable', 'info');
+                return;
+            }
+
+            if (day.booking_status === 'hmcc_sponsored' && !adminToken) {
+                showToast('This date is sponsored by HMCC', 'info');
+                return;
+            }
+
+            if (day.booking_status === 'eid' && !adminToken) {
+                showToast('Eid Mubarak! 🌙 This is Eid ul Fitr', 'info');
+                return;
+            }
+
+            const dateObj = new Date(day.date + 'T00:00:00');
+            const formattedDate = dateObj.toLocaleDateString('en-US', { 
+                weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' 
+            });
+
+            document.getElementById('modal-title').textContent = 
+                day.booking_status === 'available' ? 'Sponsor Iftar' : 'View Sponsorship';
+            document.getElementById('modal-date').textContent = `${formattedDate} | ${day.hijri_date}`;
+            document.getElementById('selected-date').value = day.date;
+            document.getElementById('booking-id').value = day.id;
+
+            // Update pricing display
+            document.getElementById('display-total').textContent = `$${(day.total_amount || 0).toLocaleString()}`;
+            document.getElementById('display-breakdown').textContent = 
+                `$${(day.food_amount || 0).toLocaleString()} Food + $${(day.cleaning_amount || 0).toLocaleString()} Cleanup`;
+
+            // Set expected guests default
+            document.getElementById('expected_guests').value = day.expected_guests || 100;
+            document.getElementById('expected_guests').placeholder = '100';
+
+            // Reset form
+            document.getElementById('booking-form').reset();
+            document.getElementById('expected_guests').value = day.expected_guests || 100;
+
+            // Show admin fields if admin
+            document.getElementById('admin-fields').style.display = adminToken ? 'block' : 'none';
+
+            // Populate form if booking exists
+            if (day.sponsor_name) {
+                populateForm(day);
+            }
+
+            // Update footer buttons based on status and role
+            updateModalFooter(day);
+
+            document.getElementById('booking-modal').classList.add('active');
+        }
+
+        function populateForm(data) {
+            document.getElementById('sponsor_name').value = data.sponsor_name || '';
+            document.getElementById('sponsor_email').value = data.sponsor_email || '';
+            document.getElementById('sponsor_phone').value = data.sponsor_phone || '';
+            document.getElementById('sponsor_organization').value = data.sponsor_organization || '';
+            document.getElementById('food_vendor_name').value = data.food_vendor_name || '';
+            document.getElementById('expected_guests').value = data.expected_guests || '';
+            document.getElementById('special_notes').value = data.special_notes || '';
+            
+            // Admin fields
+            if (adminToken) {
+                document.getElementById('amount_paid').value = data.amount_paid || '';
+                document.getElementById('payment_status').value = data.payment_status || 'pending';
+                document.getElementById('payment_method_admin').value = data.payment_method || '';
+                document.getElementById('check_number').value = data.check_number || '';
+                document.getElementById('mohid_reference').value = data.mohid_reference || '';
+                document.getElementById('admin_comment').value = data.admin_comment || '';
+            }
+        }
+
+        function updateModalFooter(day) {
+            const footer = document.getElementById('modal-footer');
+            footer.innerHTML = '';
+
+            // Close button
+            const closeBtn = document.createElement('button');
+            closeBtn.type = 'button';
+            closeBtn.className = 'btn btn-secondary';
+            closeBtn.textContent = 'Close';
+            closeBtn.addEventListener('click', closeModal);
+            footer.appendChild(closeBtn);
+
+            if (day.booking_status === 'available') {
+                const submitBtn = document.createElement('button');
+                submitBtn.type = 'button';
+                submitBtn.className = 'btn btn-primary';
+                submitBtn.textContent = 'Submit Sponsorship';
+                submitBtn.addEventListener('click', submitBooking);
+                footer.appendChild(submitBtn);
+            } else if (adminToken) {
+                // Admin actions
+                if (day.approval_status === 'pending') {
+                    const approveBtn = document.createElement('button');
+                    approveBtn.type = 'button';
+                    approveBtn.className = 'btn btn-success';
+                    approveBtn.textContent = '✓ Approve';
+                    approveBtn.addEventListener('click', approveBooking);
+                    footer.appendChild(approveBtn);
+
+                    const rejectBtn = document.createElement('button');
+                    rejectBtn.type = 'button';
+                    rejectBtn.className = 'btn btn-danger';
+                    rejectBtn.textContent = '✗ Reject';
+                    rejectBtn.addEventListener('click', rejectBooking);
+                    footer.appendChild(rejectBtn);
+                }
+
+                const updateBtn = document.createElement('button');
+                updateBtn.type = 'button';
+                updateBtn.className = 'btn btn-primary';
+                updateBtn.textContent = 'Update';
+                updateBtn.addEventListener('click', adminUpdateBooking);
+                footer.appendChild(updateBtn);
+
+                if (day.booking_status !== 'hmcc_sponsored') {
+                    const cancelBtn = document.createElement('button');
+                    cancelBtn.type = 'button';
+                    cancelBtn.className = 'btn btn-danger';
+                    cancelBtn.textContent = 'Cancel Booking';
+                    cancelBtn.addEventListener('click', cancelBooking);
+                    footer.appendChild(cancelBtn);
+                }
+            }
+        }
+
+        function closeModal() {
+            document.getElementById('booking-modal').classList.remove('active');
+            currentBooking = null;
+        }
+
+        // Submit new booking
+        async function submitBooking() {
+            const sponsorName = document.getElementById('sponsor_name').value.trim();
+            const sponsorEmail = document.getElementById('sponsor_email').value.trim();
+            const sponsorPhone = document.getElementById('sponsor_phone').value.trim();
+            
+            if (!sponsorName) {
+                showToast('Please enter your name', 'error');
+                return;
+            }
+
+            if (!sponsorEmail) {
+                showToast('Please enter your email', 'error');
+                return;
+            }
+
+            if (!sponsorPhone) {
+                showToast('Please enter your phone number', 'error');
+                return;
+            }
+
+            const sponsorOrganization = document.getElementById('sponsor_organization').value.trim();
+            if (!sponsorOrganization) {
+                showToast('Please enter a family name for display', 'error');
+                return;
+            }
+
+            const data = {
+                sponsor_name: sponsorName,
+                sponsor_email: sponsorEmail,
+                sponsor_phone: sponsorPhone,
+                sponsor_organization: document.getElementById('sponsor_organization').value.trim(),
+                food_vendor_name: document.getElementById('food_vendor_name').value.trim(),
+                special_notes: document.getElementById('special_notes').value.trim()
+            };
+
+            const date = document.getElementById('selected-date').value;
+
+            try {
+                const response = await fetch(`${API_BASE}/bookings/date/${date}`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    showToast(result.message, 'success');
+                    closeModal();
+                    loadCalendar();
+                    loadStats();
+                } else {
+                    showToast(result.error || 'Failed to submit booking', 'error');
+                }
+            } catch (error) {
+                console.error('Error submitting booking:', error);
+                showToast('Failed to connect to server', 'error');
+            }
+        }
+
+        // Admin: Update booking
+        async function adminUpdateBooking() {
+            const bookingId = document.getElementById('booking-id').value;
+            
+            const data = {
+                sponsor_name: document.getElementById('sponsor_name').value.trim(),
+                sponsor_email: document.getElementById('sponsor_email').value.trim(),
+                sponsor_phone: document.getElementById('sponsor_phone').value.trim(),
+                sponsor_organization: document.getElementById('sponsor_organization').value.trim(),
+                food_vendor_name: document.getElementById('food_vendor_name').value.trim(),
+                special_notes: document.getElementById('special_notes').value.trim(),
+                payment_method: document.getElementById('payment_method_admin').value || null,
+                amount_paid: parseFloat(document.getElementById('amount_paid').value) || 0,
+                payment_status: document.getElementById('payment_status').value,
+                check_number: document.getElementById('check_number').value.trim(),
+                mohid_reference: document.getElementById('mohid_reference').value.trim(),
+                admin_comment: document.getElementById('admin_comment').value.trim()
+            };
+
+            try {
+                const response = await fetch(`${API_BASE}/admin/bookings/${bookingId}`, {
+                    method: 'PUT',
+                    headers: { 
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${adminToken}`
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    showToast('Booking updated successfully', 'success');
+                    closeModal();
+                    loadCalendar();
+                    loadStats();
+                } else {
+                    showToast(result.error || 'Failed to update', 'error');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                showToast('Failed to connect to server', 'error');
+            }
+        }
+
+        // Admin: Approve booking
+        async function approveBooking() {
+            const bookingId = document.getElementById('booking-id').value;
+
+            try {
+                const response = await fetch(`${API_BASE}/admin/bookings/${bookingId}/approve`, {
+                    method: 'POST',
+                    headers: { 'Authorization': `Bearer ${adminToken}` }
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    showToast('Booking approved!', 'success');
+                    closeModal();
+                    loadCalendar();
+                    loadStats();
+                } else {
+                    showToast(result.error || 'Failed to approve', 'error');
+                }
+            } catch (error) {
+                showToast('Failed to connect to server', 'error');
+            }
+        }
+
+        // Admin: Reject booking
+        async function rejectBooking() {
+            const reason = prompt('Enter rejection reason (optional):');
+            const bookingId = document.getElementById('booking-id').value;
+
+            try {
+                const response = await fetch(`${API_BASE}/admin/bookings/${bookingId}/reject`, {
+                    method: 'POST',
+                    headers: { 
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${adminToken}`
+                    },
+                    body: JSON.stringify({ rejection_reason: reason })
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    showToast('Booking rejected, date is now available', 'success');
+                    closeModal();
+                    loadCalendar();
+                    loadStats();
+                } else {
+                    showToast(result.error || 'Failed to reject', 'error');
+                }
+            } catch (error) {
+                showToast('Failed to connect to server', 'error');
+            }
+        }
+
+        // Admin: Cancel booking
+        async function cancelBooking() {
+            if (!confirm('Are you sure you want to cancel this booking? The date will become available again.')) {
+                return;
+            }
+
+            const bookingId = document.getElementById('booking-id').value;
+
+            try {
+                const response = await fetch(`${API_BASE}/admin/bookings/${bookingId}`, {
+                    method: 'DELETE',
+                    headers: { 'Authorization': `Bearer ${adminToken}` }
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    showToast('Booking cancelled', 'success');
+                    closeModal();
+                    loadCalendar();
+                    loadStats();
+                } else {
+                    showToast(result.error || 'Failed to cancel', 'error');
+                }
+            } catch (error) {
+                showToast('Failed to connect to server', 'error');
+            }
+        }
+
+        // Login functions
+        function showLoginModal() {
+            document.getElementById('login-modal').classList.add('active');
+        }
+
+        function closeLoginModal() {
+            document.getElementById('login-modal').classList.remove('active');
+        }
+
+        async function login() {
+            const username = document.getElementById('login-username').value;
+            const password = document.getElementById('login-password').value;
+
+            try {
+                const response = await fetch(`${API_BASE}/admin/login`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ username, password })
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    adminToken = result.data.token;
+                    localStorage.setItem('adminToken', adminToken);
+                    showToast('Welcome, Admin!', 'success');
+                    closeLoginModal();
+                    showAdminUI(result.data.username);
+                } else {
+                    showToast(result.error || 'Login failed', 'error');
+                }
+            } catch (error) {
+                showToast('Failed to connect to server', 'error');
+            }
+        }
+
+        async function logout() {
+            try {
+                await fetch(`${API_BASE}/admin/logout`, {
+                    method: 'POST',
+                    headers: { 'Authorization': `Bearer ${adminToken}` }
+                });
+            } catch (error) {
+                console.error('Logout error:', error);
+            }
+
+            localStorage.removeItem('adminToken');
+            adminToken = null;
+            hideAdminUI();
+            loadCalendar();
+            showToast('Logged out', 'info');
+        }
+
+        // Export functions
+        function exportData(format) {
+            const url = `${API_BASE}/admin/export/${format}`;
+            
+            fetch(url, {
+                headers: { 'Authorization': `Bearer ${adminToken}` }
+            })
+            .then(response => {
+                if (format === 'json') {
+                    return response.json().then(data => {
+                        const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+                        downloadBlob(blob, `hmcc-ramadan-bookings.json`);
+                    });
+                } else {
+                    return response.blob().then(blob => {
+                        const ext = format === 'excel' ? 'xlsx' : format;
+                        downloadBlob(blob, `hmcc-ramadan-bookings.${ext}`);
+                    });
+                }
+            })
+            .catch(error => {
+                showToast('Export failed', 'error');
+            });
+        }
+
+        function downloadBlob(blob, filename) {
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = filename;
+            document.body.appendChild(a);
+            a.click();
+            window.URL.revokeObjectURL(url);
+            a.remove();
+        }
+
+        // Toast notifications
+        function showToast(message, type = 'info') {
+            const container = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            toast.className = `toast ${type}`;
+            toast.innerHTML = `
+                <span>${type === 'success' ? '✓' : type === 'error' ? '✕' : 'ℹ'}</span>
+                <span>${message}</span>
+            `;
+            container.appendChild(toast);
+
+            setTimeout(() => {
+                toast.style.animation = 'slideIn 0.3s ease reverse';
+                setTimeout(() => toast.remove(), 300);
+            }, 4000);
+        }
+    </script>
+</body>
+</html>
