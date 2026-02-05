@@ -279,9 +279,10 @@
         }
 
         .calendar-card.hmcc_sponsored {
-            border-color: var(--hmcc-color);
-            background: var(--hmcc-bg);
+            border-color: var(--blocked-color);
+            background: var(--blocked-bg);
             cursor: not-allowed;
+            opacity: 0.8;
         }
 
         .calendar-card.eid {
@@ -1161,10 +1162,12 @@
                 let statusClass = day.booking_status;
                 card.className = `calendar-card ${statusClass}${day.is_special_night ? ' special' : ''}`;
                 
-                // Only clickable if available or admin
-                if (day.booking_status === 'available' || adminToken) {
+                // Only clickable if available or admin (but never for hmcc_sponsored or blocked)
+                if (day.booking_status === 'hmcc_sponsored') {
+                    // HMCC sponsored dates are never clickable
+                } else if (day.booking_status === 'available' || adminToken) {
                     card.onclick = () => openModal(day);
-                } else if (day.booking_status !== 'blocked' && day.booking_status !== 'hmcc_sponsored') {
+                } else if (day.booking_status !== 'blocked') {
                     card.onclick = () => openModal(day);
                 }
 
