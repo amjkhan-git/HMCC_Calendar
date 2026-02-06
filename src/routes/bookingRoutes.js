@@ -33,7 +33,6 @@ router.get('/calendar', async (req, res, next) => {
         total: dates.length,
         year: 2026,
         hijri_year: 1447,
-        payment_link: config.paymentLink,
         zelle_info: config.zelleInfo,
         pricing: config.pricing
       }
@@ -69,7 +68,6 @@ router.get('/pricing', (req, res) => {
   res.json({
     success: true,
     data: {
-      payment_link: config.paymentLink,
       zelle_info: config.zelleInfo,
       pricing: config.pricing,
       guest_capacity: {
@@ -255,7 +253,6 @@ router.post('/bookings/date/:date', dateParamValidation, createBookingValidation
         approval_status: booking.approval_status,
         total_amount: booking.total_amount,
         pricing_description: booking.pricing_description,
-        payment_link: config.paymentLink,
         zelle_info: config.zelleInfo
       }
     });

@@ -34,7 +34,7 @@ async function initializeDatabase() {
       food_amount REAL DEFAULT 0,
       cleaning_amount REAL DEFAULT 0,
       total_amount REAL DEFAULT 0,
-      payment_method TEXT CHECK(payment_method IN ('check', 'cash', 'zelle', NULL)),
+      payment_method TEXT CHECK(payment_method IN ('check', 'credit_card', 'cash', 'zelle', 'paypal', NULL)),
       check_number TEXT,
       mohid_reference TEXT,
       amount_paid REAL DEFAULT 0,

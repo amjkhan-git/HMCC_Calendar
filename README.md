@@ -28,7 +28,7 @@ A web application for managing Ramadan Iftar sponsorships at **Heathrow Muslim C
 
 ## Contact for Sponsorship
 
-- **Br. Mazar**: (202) 630-9790
+- **Br. Mazhar**: (202) 630-9790
 - **Br. Jamal**: (407) 216-9252
 - **Br. Saif**: (813) 317-6363
 - **Br. Khan**: (850) 345-1751

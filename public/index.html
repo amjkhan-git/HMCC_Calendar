@@ -585,24 +585,7 @@
             flex-wrap: wrap;
         }
 
-        .payment-link-section {
-            background: var(--gold-light);
-            padding: 1rem;
-            border-radius: 8px;
-            text-align: center;
-            margin-top: 1rem;
-        }
 
-        .payment-link-section a {
-            display: inline-block;
-            padding: 0.75rem 1.5rem;
-            background: var(--gold);
-            color: var(--primary-dark);
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: 600;
-            margin-top: 0.5rem;
-        }
 
         /* Admin Panel Styles */
         .admin-actions {
@@ -821,7 +804,7 @@
                 <div class="pricing-card">
                     <h4>📞 Contact for Sponsorship</h4>
                     <div class="breakdown" style="text-align: left; line-height: 1.8;">
-                        <strong>Br. Mazar:</strong> <a href="tel:2026309790" style="color: var(--primary-color);">(202) 630-9790</a><br>
+                        <strong>Br. Mazhar:</strong> <a href="tel:2026309790" style="color: var(--primary-color);">(202) 630-9790</a><br>
                         <strong>Br. Jamal:</strong> <a href="tel:4072169252" style="color: var(--primary-color);">(407) 216-9252</a><br>
                         <strong>Br. Saif:</strong> <a href="tel:8133176363" style="color: var(--primary-color);">(813) 317-6363</a><br>
                         <strong>Br. Khan:</strong> <a href="tel:8503451751" style="color: var(--primary-color);">(850) 345-1751</a>
@@ -991,9 +974,7 @@
                         </div>
                     </div>
 
-                    <div class="payment-link-section" id="payment-link-section">
-                        <a href="https://www.heathrowmcc.org/donate/" id="payment-link" target="_blank" class="btn btn-primary" style="display: inline-block; text-decoration: none;">💳 Donate Online</a>
-                    </div>
+
                 </form>
             </div>
             <div class="modal-footer" id="modal-footer">
@@ -1044,7 +1025,7 @@
         let calendarData = [];
         let currentBooking = null;
         let adminToken = localStorage.getItem('adminToken');
-        let paymentLink = 'https://www.heathrowmcc.org/donate/';
+
 
         // Initialize
         document.addEventListener('DOMContentLoaded', () => {
@@ -1117,10 +1098,7 @@
                 
                 if (result.success) {
                     calendarData = result.data;
-                    if (result.meta.payment_link) {
-                        paymentLink = result.meta.payment_link;
-                    }
-                    document.getElementById('payment-link').href = paymentLink;
+
                     renderCalendar();
                 } else {
                     showToast('Failed to load calendar', 'error');

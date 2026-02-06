@@ -5,21 +5,22 @@
  * and ends on March 19, 2026 (29 Ramadan 1447) - Last Iftar
  * March 20, 2026 is Eid ul Fitr (1 Shawwal 1447)
  * 
- * All dates open for booking except:
- * - March 14th: HMCC Sponsored - Khatm-e-Quran
+ * Feb 19-21: Blocked (mosque arrangements)
+ * Feb 22: HMCC Sponsored
+ * Feb 23+: Open for booking
  * 
- * Guest capacity: 100 (fixed)
- * Flat pricing: $1,500 ($1,400 Food + $100 Cleanup)
+ * Guest capacity: 150 Weekday, 200 Weekend (adjust as needed)
+ * Last 10 nights: March 10-19 (20-29 Ramadan)
  */
 
 const config = require('../config');
 
 const ramadanDates = [
-  // Ramadan starts Feb 19 (1 Ramadan) - All dates open for booking
-  { date: '2026-02-19', hijri_day: 1, hijri_date: '1 Ramadan 1447', day_of_week: 'Thursday', initial_status: 'available' },
-  { date: '2026-02-20', hijri_day: 2, hijri_date: '2 Ramadan 1447', day_of_week: 'Friday', initial_status: 'available' },
-  { date: '2026-02-21', hijri_day: 3, hijri_date: '3 Ramadan 1447', day_of_week: 'Saturday', initial_status: 'available' },
-  { date: '2026-02-22', hijri_day: 4, hijri_date: '4 Ramadan 1447', day_of_week: 'Sunday', initial_status: 'available' },
+  // Ramadan starts Feb 19 (1 Ramadan)
+  { date: '2026-02-19', hijri_day: 1, hijri_date: '1 Ramadan 1447', day_of_week: 'Thursday', initial_status: 'blocked' },
+  { date: '2026-02-20', hijri_day: 2, hijri_date: '2 Ramadan 1447', day_of_week: 'Friday', initial_status: 'blocked' },
+  { date: '2026-02-21', hijri_day: 3, hijri_date: '3 Ramadan 1447', day_of_week: 'Saturday', initial_status: 'blocked' },
+  { date: '2026-02-22', hijri_day: 4, hijri_date: '4 Ramadan 1447', day_of_week: 'Sunday', initial_status: 'hmcc_sponsored' },
   { date: '2026-02-23', hijri_day: 5, hijri_date: '5 Ramadan 1447', day_of_week: 'Monday', initial_status: 'available' },
   { date: '2026-02-24', hijri_day: 6, hijri_date: '6 Ramadan 1447', day_of_week: 'Tuesday', initial_status: 'available' },
   { date: '2026-02-25', hijri_day: 7, hijri_date: '7 Ramadan 1447', day_of_week: 'Wednesday', initial_status: 'available' },
@@ -40,8 +41,7 @@ const ramadanDates = [
   { date: '2026-03-11', hijri_day: 21, hijri_date: '21 Ramadan 1447', day_of_week: 'Wednesday', initial_status: 'available' },
   { date: '2026-03-12', hijri_day: 22, hijri_date: '22 Ramadan 1447', day_of_week: 'Thursday', initial_status: 'available' },
   { date: '2026-03-13', hijri_day: 23, hijri_date: '23 Ramadan 1447', day_of_week: 'Friday', initial_status: 'available' },
-  // March 14 - HMCC Sponsored Khatam-e-Quran
-  { date: '2026-03-14', hijri_day: 24, hijri_date: '24 Ramadan 1447', day_of_week: 'Saturday', initial_status: 'hmcc_sponsored' },
+  { date: '2026-03-14', hijri_day: 24, hijri_date: '24 Ramadan 1447', day_of_week: 'Saturday', initial_status: 'available' },
   { date: '2026-03-15', hijri_day: 25, hijri_date: '25 Ramadan 1447', day_of_week: 'Sunday', initial_status: 'available' },
   { date: '2026-03-16', hijri_day: 26, hijri_date: '26 Ramadan 1447', day_of_week: 'Monday', initial_status: 'available' },
   { date: '2026-03-17', hijri_day: 27, hijri_date: '27 Ramadan 1447', day_of_week: 'Tuesday', initial_status: 'available' },

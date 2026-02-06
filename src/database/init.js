@@ -21,9 +21,9 @@ async function seedRamadanDates() {
       let sponsorName = null;
       let approvalStatus = null;
       
-      // March 14 is HMCC sponsored - Khatam-e-Quran
+      // Feb 22 is HMCC sponsored
       if (dateInfo.initial_status === 'hmcc_sponsored') {
-        sponsorName = 'HMCC - Khatm-e-Quran';
+        sponsorName = 'HMCC - Heathrow Muslim Community Center';
         approvalStatus = 'approved';
       }
       

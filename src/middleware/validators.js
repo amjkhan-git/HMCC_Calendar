@@ -75,7 +75,7 @@ const createBookingValidation = [
   
   body('payment_method')
     .optional({ checkFalsy: true })
-    .isIn(['check', 'cash', 'zelle'])
+    .isIn(['check', 'credit_card', 'cash', 'zelle', 'paypal'])
     .withMessage('Invalid payment method'),
   
   validate
@@ -144,7 +144,7 @@ const adminUpdateBookingValidation = [
   
   body('payment_method')
     .optional({ checkFalsy: true })
-    .isIn(['check', 'cash', 'zelle'])
+    .isIn(['check', 'credit_card', 'cash', 'zelle', 'paypal'])
     .withMessage('Invalid payment method'),
   
   body('check_number')

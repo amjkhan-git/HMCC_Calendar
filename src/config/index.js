@@ -21,9 +21,6 @@ const config = {
   rateLimitWindowMs: parseInt(process.env.RATE_LIMIT_WINDOW_MS, 10) || 15 * 60 * 1000,
   rateLimitMaxRequests: parseInt(process.env.RATE_LIMIT_MAX_REQUESTS, 10) || 100,
   
-  // Payment - HMCC uses Zelle/PayPal (update if you get a Mohid link)
-  paymentLink: process.env.PAYMENT_LINK || 'https://www.heathrowmcc.org/donate/',
-  
   // Zelle payment info for HMCC
   zelleInfo: {
     primary: 'Hmccoppexp@yahoo.com'

@@ -12,8 +12,6 @@ services:
         value: 3000
       - key: CORS_ORIGINS
         value: https://heathrowmcc.org,https://www.heathrowmcc.org
-      - key: PAYMENT_LINK
-        value: https://www.heathrowmcc.org/donate/
       - key: ADMIN_USERNAME
         sync: false
       - key: ADMIN_PASSWORD
