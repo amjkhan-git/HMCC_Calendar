@@ -4,11 +4,11 @@ A web application for managing Ramadan Iftar sponsorships at **Heathrow Muslim C
 
 ## Features
 
-- 📅 Interactive calendar showing Ramadan 2026 dates (Feb 19 - Mar 19)
+- 📅 Interactive calendar showing Ramadan 2026 dates (Feb 18 - Mar 19)
 - 🌙 Hijri date display with special night highlighting (Laylatul Qadr)
-- 💰 Flat pricing for all days
+- 💰 Dynamic pricing (weekday/weekend/last 10 nights)
 - 👤 Sponsor booking with approval workflow
-- 💳 Payment tracking (Zelle)
+- 💳 Payment tracking (Zelle, PayPal, Check, Cash)
 - 🔐 Admin panel for managing bookings
 - 📊 Export to CSV, Excel, PDF
 - 📱 Mobile-responsive design
@@ -17,21 +17,18 @@ A web application for managing Ramadan Iftar sponsorships at **Heathrow Muslim C
 
 | Period | Price | Food | Cleanup | Capacity |
 |--------|-------|------|---------|----------|
-| All Days | $1,500 | $1,400 | $100 | ~100 guests |
-
-**Estimated cost includes:** Food, Dates, Water and paper products
+| Weekday (Mon-Thu) | $2,500 | $2,000 | $500 | 150 guests |
+| Weekend (Fri-Sun) | $3,100 | $2,500 | $600 | 200 guests |
+| Last 10 Nights | $3,500 | $2,800 | $700 | 200 guests |
 
 ## Payment Methods
 
-- **Zelle (Preferred)**: Hmccoppexp@yahoo.com
+- **Zelle (Preferred)**:
+  - Masjid Expense: hmccoppexp@yahoo.com
+  - Masjid Loans: hmccloans@yahoo.com
+  - Zakat Only: hmcczakat@yahoo.com
+- **PayPal**: https://www.heathrowmcc.org/donate/
 - **Check / Cash**: Contact the mosque directly
-
-## Contact for Sponsorship
-
-- **Br. Mazhar**: (202) 630-9790
-- **Br. Jamal**: (407) 216-9252
-- **Br. Saif**: (813) 317-6363
-- **Br. Khan**: (850) 345-1751
 
 ## Tech Stack
 
