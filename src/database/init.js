@@ -21,9 +21,9 @@ async function seedRamadanDates() {
       let sponsorName = null;
       let approvalStatus = null;
       
-      // Feb 22 is HMCC sponsored
+      // HMCC sponsored dates
       if (dateInfo.initial_status === 'hmcc_sponsored') {
-        sponsorName = 'HMCC - Heathrow Muslim Community Center';
+        sponsorName = dateInfo.sponsor_label || 'HMCC - Heathrow Muslim Community Center';
         approvalStatus = 'approved';
       }
       
@@ -94,10 +94,48 @@ async function fixHijriDates() {
     }
   }
 
+  // Fix Mar 13 → HMCC Khatam-e-Quran sponsored
+  try {
+    const mar13 = await db.execute({
+      sql: `UPDATE bookings 
+            SET booking_status = 'hmcc_sponsored', 
+                sponsor_name = 'HMCC - Khatam-e-Quran',
+                approval_status = 'approved',
+                updated_at = datetime('now')
+            WHERE date = '2026-03-13' AND booking_status NOT IN ('hmcc_sponsored')`,
+      args: []
+    });
+    if (mar13.rowsAffected > 0) {
+      updated++;
+      console.log('  Fixed: 2026-03-13 → HMCC Khatam-e-Quran (sponsored)');
+    }
+  } catch (err) {
+    console.error('Error fixing Mar 13:', err.message);
+  }
+
+  // Ensure Mar 14 is available
+  try {
+    const mar14 = await db.execute({
+      sql: `UPDATE bookings 
+            SET booking_status = 'available',
+                sponsor_name = NULL,
+                approval_status = NULL,
+                updated_at = datetime('now')
+            WHERE date = '2026-03-14' AND booking_status = 'hmcc_sponsored'`,
+      args: []
+    });
+    if (mar14.rowsAffected > 0) {
+      updated++;
+      console.log('  Fixed: 2026-03-14 → Available');
+    }
+  } catch (err) {
+    console.error('Error fixing Mar 14:', err.message);
+  }
+
   if (updated > 0) {
-    console.log(`Fixed hijri dates for ${updated} records`);
+    console.log(`Fixed ${updated} records`);
   } else {
-    console.log('All hijri dates are already correct');
+    console.log('All dates are already correct');
   }
 }
 

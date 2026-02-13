@@ -41,7 +41,7 @@ const ramadanDates = [
   { date: '2026-03-10', hijri_day: 21, hijri_date: '21 Ramadan 1447', day_of_week: 'Tuesday', initial_status: 'available' },
   { date: '2026-03-11', hijri_day: 22, hijri_date: '22 Ramadan 1447', day_of_week: 'Wednesday', initial_status: 'available' },
   { date: '2026-03-12', hijri_day: 23, hijri_date: '23 Ramadan 1447', day_of_week: 'Thursday', initial_status: 'available' },
-  { date: '2026-03-13', hijri_day: 24, hijri_date: '24 Ramadan 1447', day_of_week: 'Friday', initial_status: 'available' },
+  { date: '2026-03-13', hijri_day: 24, hijri_date: '24 Ramadan 1447', day_of_week: 'Friday', initial_status: 'hmcc_sponsored', sponsor_label: 'HMCC - Khatam-e-Quran' },
   { date: '2026-03-14', hijri_day: 25, hijri_date: '25 Ramadan 1447', day_of_week: 'Saturday', initial_status: 'available' },
   { date: '2026-03-15', hijri_day: 26, hijri_date: '26 Ramadan 1447', day_of_week: 'Sunday', initial_status: 'available' },
   { date: '2026-03-16', hijri_day: 27, hijri_date: '27 Ramadan 1447', day_of_week: 'Monday', initial_status: 'available' },
