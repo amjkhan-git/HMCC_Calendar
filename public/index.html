@@ -1119,7 +1119,7 @@
                 if (result.success) {
                     document.getElementById('total-dates').textContent = result.data.total_dates;
                     document.getElementById('available-dates').textContent = result.data.available_dates;
-                    document.getElementById('booked-dates').textContent = result.data.booked_dates;
+                    document.getElementById('booked-dates').textContent = result.data.sponsored_dates || 0;
                     document.getElementById('pending-dates').textContent = result.data.pending_dates || 0;
                     document.getElementById('payments-completed').textContent = result.data.payments_completed;
                 }

@@ -64,13 +64,13 @@ const config = {
   
   // Ramadan 2026 Configuration
   ramadan2026: {
-    // Ramadan 1447 AH starts Feb 17, 2026
-    // Iftar sponsorship starts from Feb 19, 2026
+    // Ramadan 1447 AH starts Feb 18, 2026 (1 Ramadan)
+    // Ends March 19, 2026 (30 Ramadan) - March 20 is Eid
     startDate: '2026-02-18',
     endDate: '2026-03-19',
     hijriYear: 1447,
     hijriMonth: 9, // Ramadan is the 9th month
-    totalDays: 30 // Feb 19 - Mar 18 (28 days of sponsorship)
+    totalDays: 30 // Feb 18 - Mar 19 (30 Ramadan days)
   }
 };
 

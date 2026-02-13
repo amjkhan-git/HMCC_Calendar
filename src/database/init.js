@@ -60,6 +60,47 @@ async function seedRamadanDates() {
   console.log(`Seeded ${ramadanDates.length} Ramadan dates`);
 }
 
+/**
+ * Fix hijri_day and hijri_date for all existing records in the database.
+ * This is safe to run multiple times - it uses the correct data from ramadanDates.js
+ * and only updates hijri fields, preserving all booking/sponsor/payment data.
+ */
+async function fixHijriDates() {
+  console.log('Fixing hijri dates in database...');
+  let updated = 0;
+
+  for (const dateInfo of ramadanDates) {
+    try {
+      const result = await db.execute({
+        sql: `UPDATE bookings 
+              SET hijri_day = ?, hijri_date = ?, day_of_week = ?,
+                  updated_at = datetime('now')
+              WHERE date = ? AND (hijri_day != ? OR hijri_date != ?)`,
+        args: [
+          dateInfo.hijri_day,
+          dateInfo.hijri_date,
+          dateInfo.day_of_week,
+          dateInfo.date,
+          dateInfo.hijri_day,
+          dateInfo.hijri_date
+        ]
+      });
+      if (result.rowsAffected > 0) {
+        updated++;
+        console.log(`  Fixed: ${dateInfo.date} → ${dateInfo.hijri_date} (Day ${dateInfo.hijri_day})`);
+      }
+    } catch (err) {
+      console.error('Error fixing date:', dateInfo.date, err.message);
+    }
+  }
+
+  if (updated > 0) {
+    console.log(`Fixed hijri dates for ${updated} records`);
+  } else {
+    console.log('All hijri dates are already correct');
+  }
+}
+
 async function init(freshStart = false) {
   try {
     console.log('Initializing HMCC database...');
@@ -71,6 +112,7 @@ async function init(freshStart = false) {
     
     await initializeDatabase();
     await seedRamadanDates();
+    await fixHijriDates();
     console.log('HMCC Database initialization complete!');
   } catch (error) {
     console.error('Database initialization failed:', error);

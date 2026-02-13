@@ -2,15 +2,16 @@
  * Ramadan 2026 (1447 AH) Calendar Dates for HMCC
  * 
  * Ramadan 1447 begins on February 18, 2026 (1 Ramadan 1447)
- * and ends on March 18, 2026 (30 Ramadan 1447) - Last Iftar
+ * and ends on March 19, 2026 (30 Ramadan 1447) - Last Iftar
  * March 20, 2026 is Eid ul Fitr (1 Shawwal 1447)
+ * Total Ramadan days: 30 (Feb 18 - Mar 19)
  * 
- * Feb 19-21: Blocked (mosque arrangements)
- * Feb 22: HMCC Sponsored
- * Feb 23+: Open for booking
+ * Feb 18-20: Blocked (mosque arrangements)
+ * Feb 21: HMCC Sponsored
+ * Feb 22+: Open for booking
  * 
  * Guest capacity: 150 Weekday, 200 Weekend (adjust as needed)
- * Last 10 nights: March 10-19 (20-29 Ramadan)
+ * Last 10 nights: March 10-19 (21-30 Ramadan)
  */
 
 const config = require('../config');

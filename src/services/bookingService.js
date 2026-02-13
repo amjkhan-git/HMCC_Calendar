@@ -448,12 +448,14 @@ class BookingService {
         SUM(CASE WHEN booking_status = 'pending_approval' THEN 1 ELSE 0 END) as pending_dates,
         SUM(CASE WHEN booking_status = 'blocked' THEN 1 ELSE 0 END) as blocked_dates,
         SUM(CASE WHEN booking_status = 'hmcc_sponsored' THEN 1 ELSE 0 END) as hmcc_sponsored_dates,
+        SUM(CASE WHEN booking_status IN ('booked', 'hmcc_sponsored') THEN 1 ELSE 0 END) as sponsored_dates,
         SUM(CASE WHEN payment_status = 'completed' THEN 1 ELSE 0 END) as payments_completed,
         SUM(CASE WHEN payment_status = 'partial' THEN 1 ELSE 0 END) as payments_partial,
         SUM(CASE WHEN payment_status = 'pending' AND booking_status = 'booked' THEN 1 ELSE 0 END) as payments_pending,
         SUM(CASE WHEN booking_status IN ('booked', 'pending_approval') THEN total_amount ELSE 0 END) as total_expected,
         SUM(CASE WHEN booking_status IN ('booked', 'pending_approval') THEN amount_paid ELSE 0 END) as total_collected
       FROM bookings
+      WHERE booking_status != 'eid'
     `);
 
     return result.rows[0];
