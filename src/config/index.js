@@ -66,11 +66,11 @@ const config = {
   ramadan2026: {
     // Ramadan 1447 AH starts Feb 17, 2026
     // Iftar sponsorship starts from Feb 19, 2026
-    startDate: '2026-02-19',
-    endDate: '2026-03-18',
+    startDate: '2026-02-18',
+    endDate: '2026-03-19',
     hijriYear: 1447,
     hijriMonth: 9, // Ramadan is the 9th month
-    totalDays: 28 // Feb 19 - Mar 18 (28 days of sponsorship)
+    totalDays: 30 // Feb 19 - Mar 18 (28 days of sponsorship)
   }
 };
 
