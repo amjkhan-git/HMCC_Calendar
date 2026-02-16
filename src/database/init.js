@@ -94,20 +94,20 @@ async function fixHijriDates() {
     }
   }
 
-  // Fix Mar 13 → HMCC Khatam-e-Quran sponsored
+  // Make Mar 13 available (Khatam-e-Quran - now editable)
   try {
     const mar13 = await db.execute({
       sql: `UPDATE bookings 
-            SET booking_status = 'hmcc_sponsored', 
-                sponsor_name = 'HMCC - Khatam-e-Quran',
-                approval_status = 'approved',
+            SET booking_status = 'available',
+                sponsor_name = NULL,
+                approval_status = NULL,
                 updated_at = datetime('now')
-            WHERE date = '2026-03-13' AND booking_status NOT IN ('hmcc_sponsored')`,
+            WHERE date = '2026-03-13' AND booking_status = 'hmcc_sponsored'`,
       args: []
     });
     if (mar13.rowsAffected > 0) {
       updated++;
-      console.log('  Fixed: 2026-03-13 → HMCC Khatam-e-Quran (sponsored)');
+      console.log('  Fixed: 2026-03-13 → Available (was Khatam-e-Quran)');
     }
   } catch (err) {
     console.error('Error fixing Mar 13:', err.message);
